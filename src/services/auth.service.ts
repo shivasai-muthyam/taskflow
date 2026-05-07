@@ -1,11 +1,12 @@
 import { supabase } from '@/lib/supabase'
+import type { Role } from '@/types/domain'
 
 export const authService = {
-  signUp: async (email: string, password: string, fullName: string) => {
+  signUp: async (email: string, password: string, fullName: string, role: Role) => {
     return supabase.auth.signUp({
       email,
       password,
-      options: { data: { full_name: fullName } },
+      options: { data: { full_name: fullName, role } },
     })
   },
   signIn: async (email: string, password: string) => {

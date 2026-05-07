@@ -119,15 +119,10 @@ This sets up:
   - **Updates**:
     - Task status: assignee or admin
 
-### 4. Make your user an admin
+### 4. Choose role during signup
 
-After signing up your first user, promote them to admin in Supabase:
-
-```sql
-update public.profiles
-set role = 'admin'
-where email = 'you@example.com';
-```
+The signup page now includes a role selector (`member` or `admin`).  
+The selected role is passed in auth metadata and stored in `public.profiles` by the `handle_new_user` trigger.
 
 ### 5. Run REST API + Frontend
 

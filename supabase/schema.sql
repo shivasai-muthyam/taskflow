@@ -107,7 +107,10 @@ begin
     new.id,
     coalesce(new.raw_user_meta_data ->> 'full_name', split_part(new.email, '@', 1)),
     new.email,
-    'member'
+    case
+      when lower(coalesce(new.raw_user_meta_data ->> 'role', 'member')) = 'admin' then 'admin'::app_role
+      else 'member'::app_role
+    end
   )
   on conflict (id) do nothing;
   return new;
