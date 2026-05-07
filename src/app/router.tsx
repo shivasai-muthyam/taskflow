@@ -8,17 +8,19 @@ import { DashboardPage } from '@/pages/dashboard/DashboardPage'
 import { ProjectsPage } from '@/pages/projects/ProjectsPage'
 import { TasksPage } from '@/pages/tasks/TasksPage'
 import { TeamPage } from '@/pages/team/TeamPage'
+import { LandingPage } from '@/pages/LandingPage'
 
 export const AppRouter = () => {
   return (
     <Routes>
+      <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
       <Route element={<ProtectedRoute />}>
         <Route element={<AppLayout />}>
-          <Route path="/" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/tasks" element={<TasksPage />} />
           <Route path="/team" element={<TeamPage />} />
