@@ -25,6 +25,12 @@ export const LandingPage = () => {
             </Link>
           ) : (
             <>
+              <Link
+                className="rounded-lg border border-indigo-200 bg-white px-4 py-2 text-sm font-medium text-indigo-700 transition hover:bg-indigo-50"
+                to="/guest-demo"
+              >
+                Continue as Guest
+              </Link>
               <Link className="primary-btn" to="/login">
                 Sign In
               </Link>

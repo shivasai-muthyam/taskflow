@@ -9,11 +9,13 @@ import { ProjectsPage } from '@/pages/projects/ProjectsPage'
 import { TasksPage } from '@/pages/tasks/TasksPage'
 import { TeamPage } from '@/pages/team/TeamPage'
 import { LandingPage } from '@/pages/LandingPage'
+import { GuestDemoPage } from '@/pages/GuestDemoPage'
 
 export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/guest-demo" element={<GuestDemoPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
