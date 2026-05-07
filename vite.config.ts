@@ -6,7 +6,7 @@ import path from 'node:path'
 export default defineConfig({
   plugins: [react()],
   preview: {
-    allowedHosts: ['task-flowpro.up.railway.app'],
+    allowedHosts: true,
   },
   resolve: {
     alias: {
