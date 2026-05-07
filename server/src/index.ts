@@ -14,21 +14,24 @@ const envSchema = z.object({
   VITE_SUPABASE_URL: z.string().url(),
   VITE_SUPABASE_ANON_KEY: z.string().min(1),
   API_PORT: z.string().default('4000'),
+  PORT: z.string().optional(),
+  CORS_ORIGINS: z.string().optional(),
 })
 
 const env = envSchema.parse(process.env)
 const app = express()
 
-const allowedOriginPatterns = [
-  /^http:\/\/localhost:\d+$/,
-  /^http:\/\/127\.0\.0\.1:\d+$/,
-]
+const allowedOriginPatterns = [/^http:\/\/localhost:\d+$/, /^http:\/\/127\.0\.0\.1:\d+$/, /^https:\/\/.*\.railway\.app$/]
+const allowedOrigins = (env.CORS_ORIGINS ?? '')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean)
 
 app.use(
   cors({
     origin(origin, callback) {
       if (!origin) return callback(null, true)
-      const ok = allowedOriginPatterns.some((pattern) => pattern.test(origin))
+      const ok = allowedOrigins.includes(origin) || allowedOriginPatterns.some((pattern) => pattern.test(origin))
       return callback(ok ? null : new Error(`CORS blocked origin: ${origin}`), ok)
     },
     credentials: true,
@@ -228,6 +231,7 @@ app.get('/api/team', withAuth, async (req: AuthedRequest, res) => {
   return res.json({ profiles: [profile], assignments: mergedAssignments })
 })
 
-app.listen(Number(env.API_PORT), () => {
-  console.log(`REST API running on http://localhost:${env.API_PORT}`)
+const port = Number(env.PORT ?? env.API_PORT)
+app.listen(port, () => {
+  console.log(`REST API running on port ${port}`)
 })
