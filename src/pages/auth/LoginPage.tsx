@@ -13,7 +13,7 @@ export const LoginPage = () => {
     const { error } = await authService.signIn(email, password)
     if (error) return toast.error(error.message)
     toast.success('Welcome back')
-    navigate('/')
+    navigate('/dashboard')
   }
 
   return (

@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { cn } from '@/utils/cn'
 
 const navItems = [
-  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/projects', label: 'Projects', icon: FolderKanban },
   { to: '/tasks', label: 'Tasks', icon: ListTodo },
   { to: '/team', label: 'Team', icon: Users },
@@ -32,7 +32,7 @@ export const AppLayout = () => {
   return (
     <div className="app-shell flex">
       <aside className="hidden min-h-screen w-72 flex-col border-r border-indigo-100 bg-white/80 p-4 backdrop-blur dark:border-slate-700 dark:bg-slate-900/80 lg:flex">
-        <Link to="/" className="mb-6 bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-lg font-bold text-transparent">
+        <Link to="/dashboard" className="mb-6 bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-lg font-bold text-transparent">
           TaskFlow Pro
         </Link>
         <nav className="space-y-1">
@@ -40,7 +40,7 @@ export const AppLayout = () => {
             <NavLink
               key={to}
               to={to}
-              end={to === '/'}
+              end={to === '/dashboard'}
               className={({ isActive }) =>
                 cn(
                   'flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-600 transition hover:bg-indigo-50 hover:text-indigo-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-indigo-300',
@@ -59,7 +59,7 @@ export const AppLayout = () => {
         <header className="sticky top-0 z-20 border-b border-indigo-100 bg-white/80 backdrop-blur dark:border-slate-700 dark:bg-slate-900/80">
           <div className="mx-auto flex max-w-7xl items-center justify-between p-4">
             <div className="flex items-center gap-4 lg:hidden">
-              <Link to="/" className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-lg font-bold text-transparent">
+              <Link to="/dashboard" className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-lg font-bold text-transparent">
                 TaskFlow Pro
               </Link>
             </div>
@@ -82,7 +82,7 @@ export const AppLayout = () => {
               <NavLink
                 key={to}
                 to={to}
-                end={to === '/'}
+                end={to === '/dashboard'}
                 className={({ isActive }) =>
                   cn(
                     'flex shrink-0 items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-600 transition dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300',
