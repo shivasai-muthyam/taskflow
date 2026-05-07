@@ -5,6 +5,7 @@ A small but production‑style project & task management app built in ~1 day.
 It focuses on:
 
 - Authentication and roles
+- Guest access (no sign-in required for demo usage)
 - Project & team management
 - Task creation, assignment & status tracking
 - Simple analytics dashboard (projects, tasks, overdue)
@@ -21,7 +22,22 @@ It focuses on:
 
 ---
 
+## Live Links
+
+- **Frontend (Railway)**: `https://task-flowpro.up.railway.app`
+- **API (Railway)**: `https://server-production-6f54.up.railway.app`
+
+> If you redeploy to a new Railway domain, update these links and `VITE_API_BASE_URL` accordingly.
+
+---
+
 ## Features (What works)
+
+- **Guest Mode**
+  - Public landing page includes **Continue as Guest**
+  - Guest users can create demo projects/tasks and update statuses without signup
+  - Guest data is stored in `sessionStorage` and is cleared when the browser tab/window is closed
+  - Registered users continue to use persistent Supabase-backed data
 
 - **Authentication**
   - Signup, login, logout via Supabase Auth
@@ -134,6 +150,15 @@ Open the URL that Vite prints (usually `http://localhost:5173`).
 ---
 
 ## How to Demo (Suggested Flow)
+
+### Option A: Guest demo (quick)
+
+1. Open `/` and click **Continue as Guest**.
+2. Create a project and a few tasks.
+3. Move task statuses in the board to show progress updates.
+4. Close and reopen the browser to verify guest data is removed.
+
+### Option B: Auth + RBAC demo
 
 1. **Signup/login** as admin.
 2. Create a **project** with due date and priority.
