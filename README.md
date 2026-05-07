@@ -1,6 +1,6 @@
 ## TaskFlow Pro – Project & Task Management
 
-A small but production‑style project & task management app built in ~1 day.
+A small, production‑style project & task management app.
 
 It focuses on:
 
@@ -172,7 +172,7 @@ Open the URL that Vite prints (usually `http://localhost:5173`).
 
 ---
 
-## Notes / Trade‑offs (for a 1‑day project)
+## Notes / Trade‑offs
 
 - Focus is on **core flows** + **security** rather than full analytics or realtime.
 - Overdue is computed in the UI from `due_date` instead of a background job.
